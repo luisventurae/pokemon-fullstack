@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <!-- Orejas e Pikachu -->
+    <div class="pikachu_triangle top_left"></div>
+    <div class="pikachu_triangle top_right"></div>
+    <!-- Pómulos e Pikachu -->
+    <div class="pikachu_arc bottom_left"></div>
+    <div class="pikachu_arc bottom_right"></div>
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
