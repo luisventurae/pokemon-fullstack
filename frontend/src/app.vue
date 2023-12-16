@@ -1,16 +1,21 @@
 <template>
-  <div id="app">
+  <div id="app" class="main-bg">
     <!-- Orejas e Pikachu -->
-    <div class="pikachu_triangle top_left"></div>
-    <div class="pikachu_triangle top_right"></div>
+    <div
+      class="main-bg__pikachu-triangle main-bg__pikachu-triangle__top-left"
+    />
+    <div
+      class="main-bg__pikachu-triangle main-bg__pikachu-triangle__top-right"
+    />
     <!-- Pómulos e Pikachu -->
-    <div class="pikachu_arc bottom_left"></div>
-    <div class="pikachu_arc bottom_right"></div>
+    <div class="main-bg__pikachu-arc main-bg__pikachu-arc__bottom-left" />
+    <div class="main-bg__pikachu-arc main-bg__pikachu-arc__bottom-right" />
+    <!-- Contenido Principal -->
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/"> Home </router-link> |
+      <router-link to="/about"> About </router-link>
     </nav>
-    <router-view />
+    <router-view class="main-content" />
   </div>
 </template>
 

@@ -1,6 +1,8 @@
+// Colores globales
 $yellow_pikachu: #ffe62c
 $red_pikachu: #ea2a2a
 
+// Estilos globales
 html, body
   background-color: $yellow_pikachu
   position: relative
@@ -8,34 +10,35 @@ html, body
   height: -webkit-fill-available
 
 $pikachu_width_ears: 100px
-.pikachu_triangle
-  position: absolute
-  top: 0
-  width: 0
-  height: 0
-  border-top: $pikachu_width_ears solid transparent
-  border-right: $pikachu_width_ears solid black
-  border-bottom: 0
-  border-left: 0
-  &.top_left
-    left: 0
-    rotate: 180deg
-  &.top_right
-    right: 0
-    rotate: 270deg
+.main-bg
+  &__pikachu-triangle
+    position: absolute
+    top: 0
+    width: 0
+    height: 0
+    border-top: $pikachu_width_ears solid transparent
+    border-right: $pikachu_width_ears solid black
+    border-bottom: 0
+    border-left: 0
+    &__top-left
+      left: 0
+      rotate: 180deg
+    &__top-right
+      right: 0
+      rotate: 270deg
 
-$pikachu_width_cheeks: 120px
-.pikachu_arc
-  position: absolute
-  bottom: 0
-  width: $pikachu_width_cheeks
-  height: $pikachu_width_cheeks
-  background-color: $red_pikachu
-  border-bottom: 0
-  border-left: 0
-  &.bottom_left
-    left: 0
-    border-radius: 0 $pikachu_width_cheeks 0 0
-  &.bottom_right
-    right: 0
-    border-radius: $pikachu_width_cheeks 0 0 0
+  $pikachu_width_cheeks: 120px
+  &__pikachu-arc
+    position: absolute
+    bottom: 0
+    width: $pikachu_width_cheeks
+    height: $pikachu_width_cheeks
+    background-color: $red_pikachu
+    border-bottom: 0
+    border-left: 0
+    &__bottom-left
+      left: 0
+      border-radius: 0 $pikachu_width_cheeks 0 0
+    &__bottom-right
+      right: 0
+      border-radius: $pikachu_width_cheeks 0 0 0
