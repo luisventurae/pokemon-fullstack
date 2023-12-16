@@ -1,6 +1,7 @@
 <template>
   <div class="input-atom">
     <input
+      class="shadow-common"
       type="text"
       :placeholder="placeholder"
       :value="value"
@@ -36,11 +37,10 @@ $padding_input: 12px
 .input-atom
   input
     font-family: Avenir, Helvetica, Arial, sans-serif
-    font-size: 18px
+    font-size: 22px
     padding: $padding_input
     width: calc(#{$width_input} - #{$padding_input * 2})
     border: 0
-    box-shadow: 0px 4px 14px 2px #00000045
     text-align: center
     outline: none
     &::placeholder
