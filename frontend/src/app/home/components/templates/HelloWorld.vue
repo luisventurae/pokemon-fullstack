@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <input-atom type="text" placeholder="Filtra pokemons por nombre" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
@@ -111,8 +112,10 @@
 </template>
 
 <script>
+import InputAtom from "@/app/home/components/atoms/InputAtom";
 export default {
   name: "HelloWorld",
+  components: { InputAtom },
   props: {
     msg: String,
   },

@@ -1,0 +1,48 @@
+<template>
+  <div class="input-atom">
+    <input
+      type="text"
+      :placeholder="placeholder"
+      :value="value"
+      @input="updateValue"
+      :name="name"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  name: "input-atom",
+  props: {
+    value: String,
+    placeholder: String,
+    name: String,
+  },
+  methods: {
+    /**
+     * @param {Event} event
+     */
+    updateValue(event) {
+      this.$emit("input", event.target.value);
+    },
+  },
+};
+</script>
+
+<style lang="sass" scoped>
+$width_input: 100%
+$padding_input: 12px
+
+.input-atom
+  input
+    font-family: Avenir, Helvetica, Arial, sans-serif
+    font-size: 18px
+    padding: $padding_input
+    width: calc(#{$width_input} - #{$padding_input * 2})
+    border: 0
+    box-shadow: 0px 4px 14px 2px #00000045
+    text-align: center
+    outline: none
+    &::placeholder
+      color: #c6c6c5
+</style>
