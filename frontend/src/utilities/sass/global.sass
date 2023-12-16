@@ -4,6 +4,8 @@ $red_pikachu: #ea2a2a
 html, body
   background-color: $yellow_pikachu
   position: relative
+  margin: 0
+  height: -webkit-fill-available
 
 $pikachu_width_ears: 100px
 .pikachu_triangle
@@ -15,10 +17,10 @@ $pikachu_width_ears: 100px
   border-right: $pikachu_width_ears solid black
   border-bottom: 0
   border-left: 0
-  &.top_left 
+  &.top_left
     left: 0
     rotate: 180deg
-  &.top_right 
+  &.top_right
     right: 0
     rotate: 270deg
 
@@ -31,9 +33,9 @@ $pikachu_width_cheeks: 120px
   background-color: $red_pikachu
   border-bottom: 0
   border-left: 0
-  &.bottom_left 
+  &.bottom_left
     left: 0
     border-radius: 0 $pikachu_width_cheeks 0 0
-  &.bottom_right 
+  &.bottom_right
     right: 0
     border-radius: $pikachu_width_cheeks 0 0 0
