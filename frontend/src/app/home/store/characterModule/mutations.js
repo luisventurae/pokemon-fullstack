@@ -23,6 +23,19 @@ const mutations = {
 
   /**
    * @param {state}     state
+   * @param {object[]}  characters
+   * @returns {void}
+   */
+  CONCAT_CHARACTERS(state, characters) {
+    characters.forEach((el) => {
+      if (!el.id) el.id = "";
+      if (!el.imageURL) el.imageURL = "";
+    });
+    state.characters = state.characters.concat(characters);
+  },
+
+  /**
+   * @param {state}     state
    * @param {object}    args
    * @param {string}    args.name Para buscar en la lista
    * @param {string}    args.id

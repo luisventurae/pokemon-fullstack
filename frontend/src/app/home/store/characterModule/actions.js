@@ -1,40 +1,40 @@
 import backend from "@/utilities/helpers/backend";
 
 const actions = {
-  async test() {
-    console.log("TEST OK!");
-  },
-
-  async paginateCharactersAction() {
+  /**
+   * @async
+   * @param {context} context
+   * @param {number}  page
+   * @returns {Promise<object|error>}
+   */
+  async paginateCharactersAction(context, page) {
     try {
-      const limit = 20;
-      const skip = 0;
+      const limit = 21;
+      const skip = ((page || 1) - 1) * limit;
       const response = await backend.GET(
         `pokemon?limit=${limit}&offset=${skip}`
       );
-      console.log("response", response);
-      const characters = response.data?.results;
-      this.commit("SET_ALL_CHARACTERS", characters);
+      const characters = response?.results;
+      this.commit("CONCAT_CHARACTERS", characters);
       for (let character of characters) {
         this.dispatch("getCharacterAction", character.name);
-        // break;
       }
+      return { nextPage: ++page };
     } catch (error) {
       return error;
     }
   },
 
+  /**
+   * @async
+   * @param {context} context
+   * @param {string} name
+   * @returns {Promise<void|error>}
+   */
   async getCharacterAction(context, name) {
     try {
-      const responseCharacter = await backend.GET(`pokemon/${name}`);
-      const character = responseCharacter.data;
-      console.log(
-        "responseCharacter.data.sprites",
-        responseCharacter.data.sprites
-      );
-      const responseSpecie = await backend.GET(`pokemon-species/${name}`);
-      const specie = responseSpecie.data;
-      console.log("responseSpecie.data", responseSpecie.data);
+      const character = await backend.GET(`pokemon/${name}`);
+      const specie = await backend.GET(`pokemon-species/${name}`);
       this.commit("SET_DATA_CHARACTER", {
         name: name,
         id: character.id,

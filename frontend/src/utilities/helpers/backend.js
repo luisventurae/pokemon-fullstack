@@ -25,7 +25,7 @@ class API {
    * @returns {axios}
    */
   async GET(path) {
-    return await axios.get(path);
+    return (await axios.get(path)).data;
   }
 }
 

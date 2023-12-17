@@ -24,15 +24,20 @@ import PokeCard from "../molecules/PokeCard.vue";
 export default {
   name: "list-card",
   components: { PokeCard },
+  data: () => ({
+    page: 1,
+  }),
   mounted() {
-    this.test();
-    this.paginateCharactersAction();
+    const self = this;
+    this.paginateCharactersAction(this.page).then((el) => {
+      self.page = el.nextPage;
+    });
   },
   computed: {
     ...mapGetters(["get_characters"]),
   },
   methods: {
-    ...mapActions(["test", "paginateCharactersAction"]),
+    ...mapActions(["paginateCharactersAction"]),
   },
 };
 </script>
