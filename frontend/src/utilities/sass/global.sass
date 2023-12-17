@@ -12,7 +12,7 @@ html, body
 $pikachu_width_ears: 100px
 .main-bg
   &__pikachu-triangle
-    position: absolute
+    position: fixed
     top: 0
     width: 0
     height: 0
@@ -20,6 +20,7 @@ $pikachu_width_ears: 100px
     border-right: $pikachu_width_ears solid black
     border-bottom: 0
     border-left: 0
+    z-index: 0
     &__top-left
       left: 0
       rotate: 180deg
@@ -29,13 +30,14 @@ $pikachu_width_ears: 100px
 
   $pikachu_width_cheeks: 120px
   &__pikachu-arc
-    position: absolute
+    position: fixed
     bottom: 0
     width: $pikachu_width_cheeks
     height: $pikachu_width_cheeks
     background-color: $red_pikachu
     border-bottom: 0
     border-left: 0
+    z-index: 0
     &__bottom-left
       left: 0
       border-radius: 0 $pikachu_width_cheeks 0 0

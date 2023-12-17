@@ -43,6 +43,7 @@ $padding_input: 12px
     border: 0
     text-align: center
     outline: none
+    z-index: 1
     &::placeholder
       color: #c6c6c5
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="home-template">
     <input-atom type="text" placeholder="Filtra pokemons por nombre" />
     <list-card />
   </div>
@@ -14,3 +14,8 @@ export default {
   components: { InputAtom, ListCard },
 };
 </script>
+
+<style lang="sass" scoped>
+.home-template
+  padding: 0 0 100px 0
+</style>

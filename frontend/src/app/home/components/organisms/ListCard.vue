@@ -5,10 +5,8 @@
       :key="i"
       class="list-card__item"
     >
-      <poke-card
-        imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg"
-        :name="character.name"
-      />
+      <!-- https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg -->
+      <poke-card :imageUrl="character.imageURL" :name="character.name" />
     </div>
   </div>
 </template>
@@ -22,13 +20,13 @@ export default {
   components: { PokeCard },
   mounted() {
     this.test();
-    this.listCharactersAction();
+    this.paginateCharactersAction();
   },
   computed: {
     ...mapGetters(["get_characters"]),
   },
   methods: {
-    ...mapActions(["test", "listCharactersAction"]),
+    ...mapActions(["test", "paginateCharactersAction"]),
   },
 };
 </script>
@@ -44,4 +42,5 @@ export default {
     display: flex
     justify-content: space-evenly
     align-items: center
+    z-index: 1
 </style>
