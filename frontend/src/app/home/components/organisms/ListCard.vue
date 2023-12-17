@@ -43,8 +43,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+$margin_space: 28px
+
 .list-card
-  margin: 28px 0
+  margin: $margin_space 0
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
   grid-gap: 10px
@@ -54,4 +56,5 @@ export default {
     justify-content: space-evenly
     align-items: center
     z-index: 1
+    margin: 0 0 $margin_space 0
 </style>

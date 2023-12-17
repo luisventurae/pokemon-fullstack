@@ -39,7 +39,7 @@ $padding_input: 18px
     font-family: Avenir, Helvetica, Arial, sans-serif
     font-size: 22px
     padding: $padding_input
-    width: calc(#{$width_input} - #{$padding_input * 5})
+    width: calc(#{$width_input} - #{$padding_input * 4})
     border: 0
     text-align: center
     outline: none
