@@ -21,5 +21,4 @@ const routes = [
   },
 ];
 
-console.log("0.routes", routes);
 export default routes;

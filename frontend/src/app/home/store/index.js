@@ -1,3 +1,16 @@
-const modules = {};
+import characterModule from "./characterModule";
 
-export default { modules };
+const actions = {
+  resetMoSchedule(context) {
+    context.commit("RESET_CHARACTER_MODULE");
+  },
+};
+
+const modules = {
+  characterModule,
+};
+
+export default {
+  modules,
+  actions,
+};

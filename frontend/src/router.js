@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import app from "./app/index";
 
 Vue.use(VueRouter);
-console.log("3. app", app);
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,

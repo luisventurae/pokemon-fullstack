@@ -1,38 +1,35 @@
 <template>
   <div class="list-card">
-    <div class="list-card__item">
+    <div
+      v-for="(character, i) in get_characters"
+      :key="i"
+      class="list-card__item"
+    >
       <poke-card
         imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg"
-        name="Chikorita"
-      />
-    </div>
-    <div class="list-card__item">
-      <poke-card
-        imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg"
-        name="Chikorita"
-      />
-    </div>
-    <div class="list-card__item">
-      <poke-card
-        imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg"
-        name="Chikorita"
-      />
-    </div>
-    <div class="list-card__item">
-      <poke-card
-        imageUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg"
-        name="Chikorita"
+        :name="character.name"
       />
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import PokeCard from "../molecules/PokeCard.vue";
 
 export default {
   name: "list-card",
   components: { PokeCard },
+  mounted() {
+    this.test();
+    this.listCharactersAction();
+  },
+  computed: {
+    ...mapGetters(["get_characters"]),
+  },
+  methods: {
+    ...mapActions(["test", "listCharactersAction"]),
+  },
 };
 </script>
 
