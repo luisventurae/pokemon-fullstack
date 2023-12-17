@@ -32,14 +32,14 @@ export default {
 
 <style lang="sass" scoped>
 $width_input: 100%
-$padding_input: 12px
+$padding_input: 18px
 
 .input-atom
   input
     font-family: Avenir, Helvetica, Arial, sans-serif
     font-size: 22px
     padding: $padding_input
-    width: calc(#{$width_input} - #{$padding_input * 2})
+    width: calc(#{$width_input} - #{$padding_input * 5})
     border: 0
     text-align: center
     outline: none

@@ -11,10 +11,10 @@
     <div class="main-bg__pikachu-arc main-bg__pikachu-arc__bottom-left" />
     <div class="main-bg__pikachu-arc main-bg__pikachu-arc__bottom-right" />
     <!-- Contenido Principal -->
-    <nav>
+    <!-- <nav>
       <router-link to="/"> Home </router-link> |
       <router-link to="/about"> About </router-link>
-    </nav>
+    </nav> -->
     <router-view class="main-content" />
   </div>
 </template>

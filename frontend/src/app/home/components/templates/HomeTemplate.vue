@@ -1,5 +1,6 @@
 <template>
   <div class="home-template">
+    <br />
     <input-atom type="text" placeholder="Filtra pokemons por nombre" />
     <list-card />
   </div>
