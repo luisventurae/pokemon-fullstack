@@ -2,7 +2,7 @@
   <div class="poke-card shadow-common">
     <div class="poke-card__content">
       <div class="poke-card__content__image">
-        <image-tag :src="imageUrl" alt="" text="30" />
+        <image-tag :src="imageUrl" alt="" :text="id" />
       </div>
       <div class="poke-card__content__desc">
         <ul>
@@ -10,9 +10,11 @@
             <h4>{{ name }}</h4>
           </li>
           <li>
-            <tag-atom v-for="txt in ['Fuego', 'Agua']" :text="txt" :key="txt" />
+            <tag-atom v-for="txt in types" :text="txt" :key="txt" />
           </li>
-          <li><note-mark preTitle="Evoluciona de:" title="pikachu" /></li>
+          <li v-show="beforeEvolution">
+            <note-mark preTitle="Evoluciona de:" :title="beforeEvolution" />
+          </li>
         </ul>
       </div>
     </div>
@@ -31,6 +33,8 @@ export default {
     id: String,
     imageUrl: String,
     name: String,
+    types: Array,
+    beforeEvolution: String,
   },
 };
 </script>

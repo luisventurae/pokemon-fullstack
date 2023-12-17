@@ -6,7 +6,13 @@
       class="list-card__item"
     >
       <!-- https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg -->
-      <poke-card :imageUrl="character.imageURL" :name="character.name" />
+      <poke-card
+        :imageUrl="character.imageURL"
+        :id="`${character.id}`"
+        :name="character.name"
+        :types="character.types"
+        :beforeEvolution="character.beforeEvolution"
+      />
     </div>
   </div>
 </template>

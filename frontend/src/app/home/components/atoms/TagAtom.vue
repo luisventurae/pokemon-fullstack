@@ -24,4 +24,5 @@ $text_size: 18px
   display: inline-block
   margin-right: 6px
   font-size: $text_size
+  text-transform: uppercase
 </style>

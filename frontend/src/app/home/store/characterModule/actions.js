@@ -26,12 +26,21 @@ const actions = {
 
   async getCharacterAction(context, name) {
     try {
-      const response = await backend.GET(`pokemon/${name}`);
-      console.log("response.data.sprites", response.data.sprites);
-      const characters = response.data;
+      const responseCharacter = await backend.GET(`pokemon/${name}`);
+      const character = responseCharacter.data;
+      console.log(
+        "responseCharacter.data.sprites",
+        responseCharacter.data.sprites
+      );
+      const responseSpecie = await backend.GET(`pokemon-species/${name}`);
+      const specie = responseSpecie.data;
+      console.log("responseSpecie.data", responseSpecie.data);
       this.commit("SET_DATA_CHARACTER", {
         name: name,
-        imageURL: characters.sprites.other.dream_world.front_default,
+        id: character.id,
+        imageURL: character.sprites.other.dream_world.front_default,
+        types: character.types.map((el) => el.type.name),
+        beforeEvolution: specie.evolves_from_species?.name,
       });
     } catch (error) {
       return error;
