@@ -1,6 +1,8 @@
 import express, { Application } from "express";
 import { Database } from "./helpers/my.database.helper";
 import Dotenv from "dotenv";
+import cors from "cors";
+import routesDefault from "./app/default/application/default.routes";
 
 Dotenv.config();
 
@@ -13,8 +15,8 @@ class Server {
     this.port = process.env.PORT || "3000";
     this.listening();
     this.connectDB();
-    // this.middlewares();
-    // this.routes();
+    this.middlewares();
+    this.routes();
   }
 
   listening = () => {
@@ -29,7 +31,10 @@ class Server {
     // database.close();
   };
 
-  routes = () => {};
+  routes = () => {
+    this.app.use(cors({ origin: "*" }));
+    this.app.use("/", routesDefault);
+  };
 
   middlewares = () => {
     this.app.use(express.json());
