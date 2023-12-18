@@ -5,7 +5,6 @@
       :key="i"
       class="list-card__item"
     >
-      <!-- https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/152.svg -->
       <poke-card
         :imageUrl="character.imageURL"
         :id="`${character.id}`"
@@ -28,16 +27,42 @@ export default {
     page: 1,
   }),
   mounted() {
-    const self = this;
-    this.paginateCharactersAction(this.page).then((el) => {
-      self.page = el.nextPage;
-    });
+    this.handlePaginate();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   computed: {
     ...mapGetters(["get_characters"]),
   },
   methods: {
     ...mapActions(["paginateCharactersAction"]),
+    handleScroll() {
+      const buffer = 1; // Ajusta este valor según sea necesario
+      const isAtBottom =
+        window.innerHeight + window.scrollY + buffer >=
+        Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight,
+          document.body.clientHeight,
+          document.documentElement.clientHeight
+        );
+
+      if (isAtBottom) {
+        // Emitir un evento cuando el scroll llega al final del body
+        this.$emit("scroll-to-bottom");
+        this.handlePaginate();
+      }
+    },
+    handlePaginate() {
+      const self = this;
+      this.paginateCharactersAction(this.page).then((el) => {
+        self.page = el.nextPage;
+      });
+    },
   },
 };
 </script>
