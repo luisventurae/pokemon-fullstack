@@ -28,6 +28,10 @@ $bg_tag_color: #d1cdca
 .image-tag
   position: relative
   width: -webkit-fill-available
+  height: -webkit-fill-available
+  display: flex
+  align-items: center
+  justify-content: center
   img
     width: 100px
   span
@@ -36,6 +40,5 @@ $bg_tag_color: #d1cdca
     left: 0
     background-color: $bg_tag_color
     padding: 4px 8px
-    margin-bottom: -35px
     font-weight: bold
 </style>

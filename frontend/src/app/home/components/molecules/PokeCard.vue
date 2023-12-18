@@ -52,9 +52,6 @@ $bg_pokecard: #dfdfdf
       background-color: $bg_pokecard
       width: 100%
       height: 200px
-      display: flex
-      align-items: center
-      justify-content: center
     &__desc
       background-color: #fff
       height: 100%
