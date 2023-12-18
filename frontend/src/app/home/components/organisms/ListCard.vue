@@ -5,15 +5,17 @@
       :key="i"
       class="list-card__item"
     >
-      <XyzTransition appear xyz="fade up-100% origin-top flip-down">
-        <poke-card
-          :imageUrl="character.imageURL"
-          :id="`${character.id}`"
-          :name="character.name"
-          :types="character.types"
-          :beforeEvolution="character.beforeEvolution"
-        />
-      </XyzTransition>
+      <xyz-transition appear xyz="fade up-100% origin-top flip-down">
+        <router-link :to="character.name" class="none-link">
+          <poke-card
+            :imageUrl="character.imageURL"
+            :id="`${character.id}`"
+            :name="character.name"
+            :types="character.types"
+            :beforeEvolution="character.beforeEvolution"
+          />
+        </router-link>
+      </xyz-transition>
     </div>
   </div>
 </template>
@@ -84,4 +86,5 @@ $margin_space: 28px
     align-items: center
     z-index: 1
     margin: 0 0 $margin_space 0
+    cursor: pointer
 </style>

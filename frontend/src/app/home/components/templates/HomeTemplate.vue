@@ -1,9 +1,9 @@
 <template>
   <div class="home-template">
     <br />
-    <XyzTransition appear xyz="fade up-100%">
+    <xyz-transition appear xyz="fade up-100%">
       <input-atom type="text" placeholder="Filtra pokemons por nombre" />
-    </XyzTransition>
+    </xyz-transition>
     <list-card />
   </div>
 </template>

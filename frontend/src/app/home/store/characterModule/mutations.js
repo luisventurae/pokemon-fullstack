@@ -17,6 +17,8 @@ const mutations = {
     characters.forEach((el) => {
       if (!el.id) el.id = "";
       if (!el.imageURL) el.imageURL = "";
+      if (!el.types) el.types = [];
+      if (!el.beforeEvolution) el.beforeEvolution = "";
     });
     state.characters = characters;
   },
@@ -30,6 +32,8 @@ const mutations = {
     characters.forEach((el) => {
       if (!el.id) el.id = "";
       if (!el.imageURL) el.imageURL = "";
+      if (!el.types) el.types = [];
+      if (!el.beforeEvolution) el.beforeEvolution = "";
     });
     state.characters = state.characters.concat(characters);
   },
