@@ -5,13 +5,15 @@
       :key="i"
       class="list-card__item"
     >
-      <poke-card
-        :imageUrl="character.imageURL"
-        :id="`${character.id}`"
-        :name="character.name"
-        :types="character.types"
-        :beforeEvolution="character.beforeEvolution"
-      />
+      <XyzTransition appear xyz="fade up-100% origin-top flip-down">
+        <poke-card
+          :imageUrl="character.imageURL"
+          :id="`${character.id}`"
+          :name="character.name"
+          :types="character.types"
+          :beforeEvolution="character.beforeEvolution"
+        />
+      </XyzTransition>
     </div>
   </div>
 </template>
