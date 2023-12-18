@@ -1,6 +1,5 @@
 <template>
-  <div class="home main__bg">
-    <!-- <img alt="Vue logo" src="@/assets/logo.png" /> -->
+  <div class="home-view main__bg">
     <home-template msg="Welcome to Your Vue.js App" />
   </div>
 </template>
@@ -10,7 +9,7 @@
 import HomeTemplate from "@/app/home/components/templates/HomeTemplate.vue";
 
 export default {
-  name: "HomeView",
+  name: "home-view",
   components: {
     HomeTemplate,
   },
