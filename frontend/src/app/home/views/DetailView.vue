@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import PokeCard from "../components/molecules/PokeCard.vue";
 
 export default {
@@ -39,19 +39,27 @@ export default {
     ...mapGetters(["get_characters"]),
   },
   methods: {
-    loadCharacter() {
-      this.getLocalCharacter();
+    ...mapActions(["getCharacterAction"]),
+    async loadCharacter() {
+      const loadedCharacter = this.getLocalCharacter();
+      if (!loadedCharacter) {
+        console.log("getRemoteCharacter");
+        this.character = await this.getCharacterAction({
+          name: this.pokeName,
+          action: "onlyGet",
+        });
+      }
     },
     /**
      * Para optimizar recursos se busca primero en local
      * @return {boolean}
      */
     getLocalCharacter() {
-      console.log("getLocalCharacter");
       const localCharacter = this.get_characters.find(
         (el) => el.name === this.pokeName
       );
       if (localCharacter) {
+        console.log("getLocalCharacter");
         this.character = localCharacter;
         return true;
       } else {

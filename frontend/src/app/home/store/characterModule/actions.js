@@ -17,10 +17,14 @@ const actions = {
       const characters = response?.results;
       this.commit("CONCAT_CHARACTERS", characters);
       for (let character of characters) {
-        this.dispatch("getCharacterAction", character.name);
+        this.dispatch("getCharacterAction", {
+          name: character.name,
+          action: "update",
+        });
       }
       return { nextPage: ++page };
     } catch (error) {
+      console.error(error);
       return error;
     }
   },
@@ -28,21 +32,29 @@ const actions = {
   /**
    * @async
    * @param {context} context
-   * @param {string} name
+   * @param {object}  payload
+   * @param {string}  payload.name
+   * @param {string}  payload.action ["update", "onlyGet"]
    * @returns {Promise<void|error>}
    */
-  async getCharacterAction(context, name) {
+  async getCharacterAction(context, { name, action }) {
     try {
+      if (!["update", "onlyGet"].includes(action))
+        throw new ReferenceError(`value action not supported`);
       const character = await backend.GET(`pokemon/${name}`);
       const specie = await backend.GET(`pokemon-species/${name}`);
-      this.commit("SET_DATA_CHARACTER", {
+      const characterBuilt = {
         name: name,
         id: character.id,
         imageURL: character.sprites.other.dream_world.front_default,
         types: character.types.map((el) => el.type.name),
         beforeEvolution: specie.evolves_from_species?.name,
-      });
+      };
+      if (action === "update")
+        this.commit("SET_DATA_CHARACTER", characterBuilt);
+      if (action === "onlyGet") return characterBuilt;
     } catch (error) {
+      console.error(error);
       return error;
     }
   },
