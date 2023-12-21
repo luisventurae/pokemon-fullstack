@@ -3,6 +3,7 @@ import { Database } from "./helpers/my.database.helper";
 import Dotenv from "dotenv";
 import cors from "cors";
 import routesDefault from "./app/default/application/default.routes";
+import routesCharacter from "./app/character/application/character.routes";
 
 Dotenv.config();
 
@@ -14,7 +15,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT || "3000";
     this.listening();
-    this.connectDB();
+    this.testConnectDB();
     this.middlewares();
     this.routes();
   }
@@ -25,7 +26,7 @@ class Server {
     );
   };
 
-  connectDB = () => {
+  testConnectDB = () => {
     const database: Database = new Database(process.env.DATABASE!);
     database.open();
     // database.close();
@@ -34,6 +35,7 @@ class Server {
   routes = () => {
     this.app.use(cors({ origin: "*" }));
     this.app.use("/", routesDefault);
+    this.app.use("/api", routesCharacter);
   };
 
   middlewares = () => {

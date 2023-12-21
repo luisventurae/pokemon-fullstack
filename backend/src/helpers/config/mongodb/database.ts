@@ -22,6 +22,10 @@ class Database {
     this.connection.useDb(this.dbName);
   }
 
+  getConnection(): Connection {
+    return this.connection;
+  }
+
   async close(): Promise<void> {
     await mongoose.disconnect();
     console.log("Conexión a MongoDB cerrada");
