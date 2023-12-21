@@ -1,4 +1,11 @@
-# frontend
+# Frontend
+
+- VueJs v2
+- Vuex, Vue Router
+- JavaScript
+- HTML, Sass, Animaciones
+- NodeJs v20.9.0
+- Uso de backend modular
 
 ## Project setup
 ```

@@ -24,7 +24,7 @@ Desarrollo del:
 
 ### Método 1
 
-Esta es la forma más sencilla, solo se necesita levantar el frontend y este hará uso del API [https://pokeapi.co/](https://pokeapi.co/) directamente.
+Esta es la forma más sencilla, **solo se necesita levantar el frontend** y este hará uso del API [https://pokeapi.co/](https://pokeapi.co/) directamente.
 
 ```mermaid
   flowchart LR
@@ -49,7 +49,7 @@ VUE_APP_POKEAPI=https://pokeapi.co/api/v2
 VUE_APP_APIREST=http://localhost:3000
 ```
 
-El valor de `POKEAPI` de `VUE_APP_BACKEND` hará que el frontend use para el backend el valor de `VUE_APP_POKEAPI`
+El valor `POKEAPI` de `VUE_APP_BACKEND` hará que el frontend use para el backend el valor de `VUE_APP_POKEAPI`.
 
 4. Instalar las dependencias:
 
@@ -65,7 +65,7 @@ O para producción:
 
 ### Método 2
 
-Esta es la forma completa, se usará tanto el frontend, el backend como la base de datos. La base de datos será alimentada con data obtenida del API [https://pokeapi.co/](https://pokeapi.co/).
+Esta es la forma completa, se usará tanto el **frontend, el backend como la base de datos de mongodb**. La base de datos será alimentada con data obtenida del API [https://pokeapi.co/](https://pokeapi.co/).
 
 ```mermaid
   flowchart LR
@@ -86,7 +86,7 @@ VUE_APP_POKEAPI=https://pokeapi.co/api/v2
 VUE_APP_APIREST=http://localhost:3000
 ```
 
-De esta forma se usará el backend desarrollado en typeScript.
+El valor `APIREST` de `VUE_APP_BACKEND` hará que el frontend use para el backend el valor de `VUE_APP_APIREST`.
 
 2. Ubicado en `backend`, copiar el `.env.example` y crear un nuevo fichero llamado `.env`. su contenido debe tener:
 
@@ -110,9 +110,14 @@ MONGODB_DATABASE=pokemondb
 
 5. Levantar el proyecto en el puerto 3000 (o como esté en el env) para modo desarrollo:
 
+> migrate-mongo up
+
 > npm run dev
 
 O para producción:
 
 > npm run build
+
+> migrate-mongo up
+
 > npm start
