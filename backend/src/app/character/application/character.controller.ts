@@ -32,9 +32,12 @@ class CharacterController {
 
   async getDataCharacter(request: Request, response: Response) {
     const pokeName: string = request.params.pokeName;
-    const character = await getCharacterData(["name", "sprites", "types"], {
-      name: pokeName,
-    });
+    const character = await getCharacterData(
+      ["name", "id", "sprites", "types"],
+      {
+        name: pokeName,
+      }
+    );
     return response.status(200).json(character);
   }
 }

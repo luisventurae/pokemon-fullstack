@@ -51,9 +51,6 @@ export class characterMongodbRepository implements CharacterRepository {
       const total = await this.characterSchema.characterModel
         .countDocuments({}, fields)
         .exec();
-      console.log("limit", limit);
-      console.log("skip", skip);
-      console.log("skip / limit", skip / limit);
 
       const maxPages = Math.round(total / limit);
       const nextPage =
