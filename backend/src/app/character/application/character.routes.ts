@@ -1,9 +1,10 @@
 import { router } from "../../../helpers/middle.helper";
-import { listSimpleCharacters } from "./character.controller";
+import CharacterController from "./character.controller";
 
 /**
  * Path Prefix: /api
  */
-router.get("/pokemon", listSimpleCharacters);
+router.get("/pokemon", CharacterController.listSimpleCharacters);
+router.get("/pokemon/:pokeName", CharacterController.getDataCharacter);
 
-export default router
+export default router;

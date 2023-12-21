@@ -1,10 +1,12 @@
 import Character from "../../domain/models/Character";
-import { Connection } from "mongoose";
+import CharacterPagResponse from "../../domain/interfaces/CharacterPagResponse.interface";
 
 export interface CharacterRepository {
   getCharacters(
     fields: string[],
     limit: number,
     skip: number
-  ): Promise<Character[]>;
+  ): Promise<CharacterPagResponse>;
+
+  getCharacterData(fields: string[], condition: any): Promise<Character>;
 }
