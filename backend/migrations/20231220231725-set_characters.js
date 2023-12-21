@@ -10,7 +10,6 @@ module.exports = {
       `${url}/pokemon?limit=100000&offset=0`
     );
     const pokemons = responsePokemons.results;
-    console.log("pokemons", pokemons);
     await Character.insertMany(pokemons);
     for await (const character of pokemons) {
       const responseCharacter = await asyncGet(
