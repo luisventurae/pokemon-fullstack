@@ -1,30 +1,9 @@
-const https = require("https");
-
-/**
- * @async
- * @param {string} url
- * @returns {Promise<any>}
- */
-const asyncGet = async (url) => {
-  return new Promise((resolve, reject) => {
-    const request = https.get(url, (response) => {
-      let data = "";
-      response.on("data", (chunk) => {
-        data += chunk;
-      });
-      response.on("end", () => {
-        return resolve(JSON.parse(data));
-      });
-    });
-    request.on("error", (error) => {
-      return reject(error);
-    });
-  });
-};
+const { asyncGet } = require("./util/requests");
 
 module.exports = {
   async up(db, client) {
     const Character = db.collection("characters");
+    Character.createIndex({ name: 1, unique: 1 });
 
     const url = "https://pokeapi.co/api/v2";
     const responsePokemons = await asyncGet(
@@ -33,10 +12,22 @@ module.exports = {
     const pokemons = responsePokemons.results;
     console.log("pokemons", pokemons);
     await Character.insertMany(pokemons);
+    for await (const character of pokemons) {
+      const responseCharacter = await asyncGet(
+        `${url}/pokemon/${character.name}`
+      );
+      await Character.updateOne(
+        { name: character.name },
+        {
+          $set: responseCharacter,
+        }
+      );
+    }
   },
 
   async down(db, client) {
     const Character = db.collection("characters");
     await Character.deleteMany();
+    Character.dropIndex({ name: 1, unique: 1 });
   },
 };
