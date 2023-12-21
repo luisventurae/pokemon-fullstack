@@ -5,6 +5,7 @@ module.exports = {
     const Character = db.collection("characters");
     const Specie = db.collection("species");
     Specie.createIndex({ character_id: 1 });
+    Specie.createIndex({ name: 1, unique: 1 });
 
     const url = "https://pokeapi.co/api/v2";
     const characters = Character.find({});
@@ -23,5 +24,6 @@ module.exports = {
     const Specie = db.collection("species");
     await Specie.deleteMany();
     Specie.dropIndex({ character_id: 1 });
+    Specie.dropIndex({ name: 1, unique: 1 });
   },
 };

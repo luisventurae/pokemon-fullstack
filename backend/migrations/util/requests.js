@@ -8,7 +8,8 @@ const asyncGet = async (url) => {
         data += chunk;
       });
       response.on("end", () => {
-        return resolve(JSON.parse(data));
+        if (data !== "Not Found") return resolve(JSON.parse(data));
+        else return resolve({});
       });
     });
     request.on("error", (error) => {
