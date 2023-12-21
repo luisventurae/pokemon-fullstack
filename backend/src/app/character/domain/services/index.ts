@@ -1,5 +1,5 @@
 import { getCharactersService } from "./character.service";
-import { characterRepository } from "../../infraestructure/index";
+import { characterRepository } from "../../infraestructure";
 
 const characterRepo = new characterRepository();
 

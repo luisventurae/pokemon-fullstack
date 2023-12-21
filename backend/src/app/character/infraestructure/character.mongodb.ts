@@ -8,7 +8,7 @@ Dotenv.config();
 interface CharacterModel extends Document, Character {}
 
 class CharacterSchema {
-  private characterModel: Model<CharacterModel>;
+  public characterModel: Model<CharacterModel>;
 
   constructor(connection: Connection) {
     const characterSchema = new Schema<CharacterModel>({
@@ -21,10 +21,6 @@ class CharacterSchema {
       "characters",
       characterSchema
     );
-  }
-
-  async findCharacters(): Promise<Character[]> {
-    return this.characterModel.find().limit(20).exec();
   }
 }
 
@@ -40,21 +36,17 @@ export class characterMongodbRepository implements CharacterRepository {
     this.characterSchema = new CharacterSchema(this.connection);
   }
 
-  public getConnection(): Connection {
-    return this.connection;
-  }
-
-  public async getCharacters(): Promise<Character[]> {
-    console.log("getCharactersRepository");
+  public async getCharacters(
+    fields: string[],
+    limit: number,
+    skip: number
+  ): Promise<Character[]> {
     try {
-      console.log(
-        "this.getConnection().readyState",
-        this.getConnection().readyState
-      );
-
-      const characters = await this.characterSchema.findCharacters();
-      console.log("characters", characters);
-
+      const characters = await this.characterSchema.characterModel
+        .find({}, fields)
+        .limit(limit)
+        .limit(skip)
+        .exec();
       return characters;
     } catch (error) {
       console.error(error);

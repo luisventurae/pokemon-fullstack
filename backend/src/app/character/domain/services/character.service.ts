@@ -2,5 +2,6 @@ import { CharacterRepository } from "../../infraestructure/repositories/characte
 import Character from "../models/Character";
 
 export const getCharactersService =
-  (characterRepository: CharacterRepository) => (): Promise<Character[]> =>
-    characterRepository.getCharacters();
+  (characterRepository: CharacterRepository) =>
+  (fields: string[], limit: number, skip: number): Promise<Character[]> =>
+    characterRepository.getCharacters(fields, limit, skip);
