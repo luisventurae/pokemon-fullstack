@@ -4,6 +4,7 @@ import Dotenv from "dotenv";
 import cors from "cors";
 import routesDefault from "./app/default/application/default.routes";
 import routesCharacter from "./app/character/application/character.routes";
+import routesSpecie from "./app/specie/application/specie.routes";
 
 Dotenv.config();
 
@@ -36,6 +37,7 @@ class Server {
     this.app.use(cors({ origin: "*" }));
     this.app.use("/", routesDefault);
     this.app.use("/api", routesCharacter);
+    this.app.use("/api", routesSpecie);
   };
 
   middlewares = () => {

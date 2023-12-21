@@ -1,5 +1,6 @@
 import { CharacterRepository } from "../../infraestructure/repositories/character.repository";
 import CharacterPagResponse from "../../domain/interfaces/CharacterPagResponse.interface";
+import Character from "../../domain/models/Character";
 
 export const getCharactersService =
   (characterRepository: CharacterRepository) =>
@@ -12,6 +13,5 @@ export const getCharactersService =
 
 export const getCharacterDataService =
   (characterRepository: CharacterRepository) =>
-  // (fields: string[], condition: any): Promise<Character> =>
-  (fields: string[], condition: any): Promise<any> =>
+  (fields: string[], condition: any): Promise<Character> =>
     characterRepository.getCharacterData(fields, condition);

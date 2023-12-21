@@ -5,7 +5,6 @@ import { successPag } from "../../../helpers/utilities/responses.util";
 
 class CharacterController {
   async listSimpleCharacters(request: Request, response: Response) {
-    console.log("request.query", request.query);
     const payload: Pagination = request.query;
     const limit = Number.isInteger(parseInt(payload.limit!))
       ? parseInt(payload.limit!)
@@ -20,10 +19,6 @@ class CharacterController {
     );
 
     const path = request.path;
-    console.log("path", path);
-    console.log("nextPage", nextPage);
-    console.log("previousPage", previousPage);
-
     const nextPageUri = !!nextPage
       ? `${path}?limit=${limit}&offset=${offset + limit}`
       : null;
@@ -36,7 +31,6 @@ class CharacterController {
   }
 
   async getDataCharacter(request: Request, response: Response) {
-    console.log("request.params", request.params);
     const pokeName: string = request.params.pokeName;
     const character = await getCharacterData(["name", "sprites", "types"], {
       name: pokeName,
