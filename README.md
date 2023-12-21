@@ -8,6 +8,8 @@ Desarrollo del:
 - Vuex, Vue Router
 - JavaScript
 - HTML, Sass, Animaciones
+- Atomic Design
+- Scroll Pagination
 - NodeJs v20.9.0
 - Uso de backend modular
 
@@ -104,11 +106,11 @@ MONGODB_DATABASE=pokemondb
 
 > npm install -g typescript
 
-4. Instalar **migrate-mongo** de forma global:
+5. Instalar **migrate-mongo** de forma global:
 
 > npm install -g migrate-mongo
 
-5. Levantar el proyecto en el puerto 3000 (o como esté en el env) para modo desarrollo:
+6. Levantar el proyecto en el puerto 3000 (o como esté en el env) para modo desarrollo:
 
 > migrate-mongo up
 
@@ -121,3 +123,10 @@ O para producción:
 > migrate-mongo up
 
 > npm start
+
+
+##### Vista previa del frontend
+
+![Vista Previa del frontend](./docs/assets/screen-view.jpg)
+
+Se deberia tener esta misma vista tanto si se usa el [Método 1](#método-1) o el [Método 2](#método-2)
