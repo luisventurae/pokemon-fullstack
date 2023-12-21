@@ -57,6 +57,15 @@ const mutations = {
       character.beforeEvolution = beforeEvolution;
     }
   },
+
+  /**
+   * @param {state}   state
+   * @param {object}  args
+   * @param {string}  args.pokeSearch
+   */
+  SET_POKE_SEARCH(state, { pokeSearch }) {
+    state.pokeSearch = pokeSearch;
+  },
 };
 
 export default mutations;
